@@ -11,7 +11,7 @@ export default function Detail() {
 
     const handleSubmit = async () => {
         try {
-            const response = await fetch('http://localhost:3000/dataById', {
+            const response = await fetch('https://csaveserv.onrender.com/dataById', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
