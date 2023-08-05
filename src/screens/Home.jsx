@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Rings } from 'react-loader-spinner'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card'
@@ -41,7 +42,15 @@ export default function () {
                     />
                   )
                 })
-                : <div>******************</div>
+                : <Rings
+                  height="80"
+                  width="80"
+                  color="#4fa94d"
+                  radius="6"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                  ariaLabel="rings-loading"/>
             }
           </div>
         </div>
