@@ -12,7 +12,7 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('http://localhost:3000/compose', {
+            const res = await fetch('https://csaveserv.onrender.com/compose', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
