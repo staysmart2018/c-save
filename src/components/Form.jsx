@@ -12,7 +12,7 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('https://csaveserv.onrender.com/compose', {
+            const res = await fetch('http://localhost:3000/compose', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export default function Form() {
     };
 
     return (
-        <>
+        <div style={{ flex: '1 1 auto' }}>
             <form onSubmit={handleSubmit}>
                 <div className='m-5'>
                     <div className="mb-4">
@@ -62,6 +62,6 @@ export default function Form() {
                     </div>
                 </div>
             </form>
-        </>
+        </div>
     )
 }
