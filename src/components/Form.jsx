@@ -1,7 +1,9 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 export default function Form() {
+    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [password, setPassword] = useState("");
@@ -10,7 +12,7 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch('https://csaveserv.onrender.com/compose', {
+            const res = await fetch('http://localhost:3000/compose', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -24,10 +26,10 @@ export default function Form() {
 
             if (res.ok) {
                 console.log('Data sent successfully');
-                // Reset the form fields
                 setTitle('');
                 setContent('');
                 setPassword('');
+                navigate('/');
             } else {
                 console.log('Error sending data');
             }

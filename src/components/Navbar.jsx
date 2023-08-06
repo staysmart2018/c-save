@@ -18,6 +18,9 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <Link className="nav-Link mx-2" style={{"textDecoration":"none", "color":"white"}} to="/compose">Compose</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-Link mx-2" style={{"textDecoration":"none", "color":"white"}} to="/delete">Delete</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
