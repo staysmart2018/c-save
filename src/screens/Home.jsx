@@ -10,7 +10,7 @@ export default function () {
 
   const loadData = async () => {
     setLoading(true);
-    let response = await fetch("http://localhost:3000/data", {
+    let response = await fetch("https://csaveserv.onrender.com/data", {
       method: "GET",
       headers: {
         'Content-Type': 'application/json'
