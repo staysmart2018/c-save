@@ -3,3 +3,9 @@ body {
   height: 100%;
   margin: 0;
 }
+
+.override {
+  display: block;
+  margin: auto auto;
+  border-color: red;
+}
