@@ -8,6 +8,7 @@ import * as ReactDOM from "react-dom/client";
 import {BrowserRouter, Routes, Route
 } from "react-router-dom";
 import Detail from './screens/Detail';
+import Delete from './screens/Delete';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/compose" element={<Compose />}/>
+          <Route path="/delete" element={<Delete />}/>
           <Route path="/content/:id" element={<Detail />}/>
         </Routes>
       </BrowserRouter>
