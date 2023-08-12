@@ -7,10 +7,11 @@ import Card from '../components/Card'
 export default function () {
   const [cont, setCont] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const loadData = async () => {
     setLoading(true);
-    let response = await fetch("https://csaveserv.onrender.com/data", {
+    let response = await fetch("http://localhost:3000/data", {
       method: "GET",
       headers: {
         'Content-Type': 'application/json'
@@ -31,32 +32,47 @@ export default function () {
       <div style={{
         "minHeight": "100vh", "display": "flex", "flexFlow": "column"
       }}>
-        <Navbar style={{"flex":"0 1 auto"}}/>
-        <div className='container text-center my-4' style={{"flex":"1 1 auto"}}>
+        <Navbar style={{ "flex": "0 1 auto" }} />
+        <div className='container text-center my-4' style={{ "flex": "1 1 auto" }}>
+          <div className="form-outline">
+            <input
+              type="text"
+              className='form-control'
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
           <div className='row'>
             {
               loading !== true
-                ? cont.map((data) => {
-                  return (
-                    <Card className="col-3"
-                      title={data.title}
-                      content={data.content}
-                      id={data._id}
-                    />
+                ? cont
+                  .filter((data) =>
+                    data.title.toLowerCase().includes(searchQuery.toLowerCase())
                   )
-                })
-                :<div style={{
+                  .map((data) => {
+                    return (
+                      <Card
+                        key={data._id}
+                        className="col-3"
+                        title={data.title}
+                        content={data.content}
+                        id={data._id}
+                      />
+                    );
+                  })
+                : <div style={{
                   "minHeight": "100vh", "display": "flex", "justifyContent": "center", "alignItems": "center"
                 }}
                 ><BounceLoader
-                className='override' 
-                size={100} 
-                color={"#36d7b7"} 
-                loading={loading} /></div>
+                    className='override'
+                    size={100}
+                    color={"#36d7b7"}
+                    loading={loading} /></div>
             }
           </div>
         </div>
-        <Footer style={{"flex":"0 1 auto"}}/>
+        <Footer style={{ "flex": "0 1 auto" }} />
       </div>
     </>
   )
